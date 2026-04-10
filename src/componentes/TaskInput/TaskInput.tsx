@@ -1,6 +1,7 @@
 import { useState } from "react";
-import type { Task } from "../types/Task.js";
+import type { Task } from "../../types/Task.js";
 import { v4 as uuidv4 } from 'uuid';
+import './TaskInput.css';
 
 type Props = {
   onAdicionarTarea: (value: Task) => void;
@@ -35,7 +36,7 @@ export default function TaskInput(props: Props){
             onChange={(e) => cambiarTexto(e.target.value)}
             placeholder="Escribe una tarea..."
         />
-        <button onClick={onAdicionarTarea}>Agregar</button>
+        <button class="btn-primary" onClick={onAdicionarTarea}>Agregar</button>
         </div>
     );
 }

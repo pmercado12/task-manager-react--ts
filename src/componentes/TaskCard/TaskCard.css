@@ -1,0 +1,17 @@
+.completed {
+  background: #02ffc0;
+}
+
+.btn-danger{
+    padding: 10px;
+    margin-left: 10px;
+    background-color: #ff0037;
+    color:white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-danger:hover{
+    background-color: #ff0000;
+}

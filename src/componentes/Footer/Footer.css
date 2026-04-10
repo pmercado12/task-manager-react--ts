@@ -1,0 +1,8 @@
+.footer {
+  position: fixed;       /* se queda fijo en la pantalla */
+  bottom: 0;             /* pegado abajo */
+  width: 100%;           /* ocupa todo el ancho */
+  background: #333;      /* color de fondo */
+  color: #fff;           /* texto blanco */
+  text-align: center;    /* centra el texto */  
+}
