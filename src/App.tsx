@@ -2,7 +2,7 @@ import Header from "./componentes/Header/Header.js";
 import TaskInput from "./componentes/TaskInput/TaskInput.js";
 import TaskList from "./componentes/TaskList/TaskList.js";
 import Footer from "./componentes/Footer/Footer.js";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Task } from "./types/Task.js";
 
 type AppModel = {
@@ -19,11 +19,27 @@ export default function App() {
   });
 
   const handleAdicionarTarea = (task: Task) => {
-    setApp((prev) => ({
-      ...prev,
-      tasksNumber:prev.tasksNumber + 1,
-      tasks: [...prev.tasks, task],
-    }));
+    fetch("http://localhost:3000/tasks",{
+      method:'POST',
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify(task)
+    }).then(response => response.json())
+    .then(datax=>{
+      console.log("tarea creada en backend", datax);
+      setApp((prev) => ({
+        ...prev,
+        tasksNumber:prev.tasksNumber + 1,
+        tasks: [...prev.tasks, datax],
+      }));
+    }).catch(
+      error=>{
+        console.error("Error al guardar tarea", error);
+      }
+    );
+
+    
 
   };
 
@@ -46,7 +62,22 @@ export default function App() {
     }));
   };
 
-  
+  useEffect(
+    ()=>{
+      fetch('http://localhost:3000/tasks').then((response)=>response.json()).then((data)=>{
+        
+        setApp((prev) => ({
+          ...prev,
+          ...prev.tasks = data,
+          tasksCompletedNumber: data.filter(task=>task.state=='completed').length,
+          tasksNumber: data.length
+        }));
+
+      }).catch(error=>{
+        console.log('Error al obtener tareas', error);
+      })
+    },[]
+  );
 
   return (
     <div>

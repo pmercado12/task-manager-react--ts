@@ -29,6 +29,7 @@ export default function TaskCard(props: Props){
     <li className={props.task.state == "completed" ? "completed" : "pending"}>
         <input type="checkbox"              
              onChange={() => onCambiarEstadoTask(props.task)}
+             checked={ props.task.state == 'completed'}
         />
         <button class="btn-danger" onClick={() => onEliminarTarea(props.task)}>Eliminar</button>
         {props.task.text}
