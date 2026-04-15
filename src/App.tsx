@@ -38,28 +38,47 @@ export default function App() {
         console.error("Error al guardar tarea", error);
       }
     );
-
-    
-
   };
 
   const onCambiarEstadoTask = (taskInput: Task) => {
-    setApp((prev) => ({
-      ...prev,
-      tasksCompletedNumber: prev.tasksCompletedNumber + (taskInput.state == 'completed' ? 1 : -1),
-      tasks: prev.tasks.map((task) =>
-        task.id === taskInput.id ? { ...task, state: taskInput.state } : task,
-      ),
-    }));
+    fetch(`http://localhost:3000/tasks/${taskInput.id}`,{
+      method:'PUT',
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify(taskInput)
+    }).then(response => response.json())
+    .then(datax=>{
+      setApp((prev) => ({
+        ...prev,
+        tasksCompletedNumber: prev.tasksCompletedNumber + (taskInput.state == 'completed' ? 1 : -1),
+        tasks: prev.tasks.map((task) =>
+          task.id === taskInput.id ? { ...task, state: taskInput.state } : task,
+        ),
+      }));
+    }).catch(
+      error=>{
+        console.error("Error al guardar tarea", error);
+      }
+    );    
   };
 
   const onEliminarTarea = (taskInput: Task) => {
-    setApp((prev) => ({
-      ...prev,      
-      tasks: prev.tasks.filter(task=>task.id !== taskInput.id),
-      tasksCompletedNumber: prev.tasksCompletedNumber + (taskInput.state == 'completed' ? -1 : 0),
-      tasksNumber: prev.tasksNumber - 1
-    }));
+    fetch(`http://localhost:3000/tasks/${taskInput.id}`,{
+      method:'DELETE'
+    }).then(response => response.json())
+    .then(datax=>{
+      setApp((prev) => ({
+        ...prev,      
+        tasks: prev.tasks.filter(task=>task.id !== taskInput.id),
+        tasksCompletedNumber: prev.tasksCompletedNumber + (taskInput.state == 'completed' ? -1 : 0),
+        tasksNumber: prev.tasksNumber - 1
+      }));
+    }).catch(
+      error=>{
+        console.error("Error al guardar tarea", error);
+      }
+    );    
   };
 
   useEffect(
