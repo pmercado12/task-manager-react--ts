@@ -1,0 +1,13 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model tasks {
+  id    String  @id @default(uuid())
+  text  String? @db.VarChar
+  state String? @db.VarChar
+}
