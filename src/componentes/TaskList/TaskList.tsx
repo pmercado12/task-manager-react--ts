@@ -7,7 +7,7 @@ type Props = {
   onEliminarTarea: (task: Task) => void;
 };
 
-function TaskList(props: Props){    
+function TaskList(props: Props){
 
     const onCambiarEstadoTask = (task: Task) =>{
         props.onCambiarEstadoTask(task);
@@ -18,19 +18,18 @@ function TaskList(props: Props){
     }
 
     return (
-        <ul>
+        <div className="flex flex-col gap-6">
         {
             props.items.map((task,index) =>{
-                //console.log(task);
-                return <TaskCard 
-                key={index} 
+                return <TaskCard
+                key={index}
                 task={task}
                 onCambiarEstadoTask={() => onCambiarEstadoTask(task)}
                 onEliminarTarea={() => onEliminarTarea(task)}
                 ></TaskCard>
             })
         }
-    </ul>
+        </div>
     );
 }
 export default TaskList;

@@ -5,6 +5,92 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>task-manager-react</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&family=Manrope:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "secondary": "#5e5e5e",
+                        "inverse-surface": "#303031",
+                        "primary-fixed-dim": "#adc7ff",
+                        "on-surface": "#1b1c1c",
+                        "on-primary-container": "#fefcff",
+                        "tertiary-container": "#787566",
+                        "surface-bright": "#faf9f9",
+                        "surface-tint": "#005bc0",
+                        "on-secondary-fixed-variant": "#464747",
+                        "outline-variant": "#c1c6d7",
+                        "surface-container-highest": "#e3e2e2",
+                        "on-primary-fixed": "#001a41",
+                        "outline": "#717786",
+                        "surface": "#faf9f9",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "on-secondary-container": "#646464",
+                        "secondary-fixed": "#e3e2e2",
+                        "error": "#ba1a1a",
+                        "on-background": "#1b1c1c",
+                        "secondary-container": "#e3e2e2",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#fffbff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#e7e3d1",
+                        "tertiary": "#5f5c4f",
+                        "on-surface-variant": "#414754",
+                        "inverse-on-surface": "#f2f0f0",
+                        "inverse-primary": "#adc7ff",
+                        "surface-container": "#efeded",
+                        "on-tertiary-fixed-variant": "#49473a",
+                        "primary-container": "#0070ea",
+                        "tertiary-fixed-dim": "#cbc7b6",
+                        "background": "#faf9f9",
+                        "primary-fixed": "#d8e2ff",
+                        "on-primary-fixed-variant": "#004493",
+                        "surface-dim": "#dbdad9",
+                        "on-error-container": "#93000a",
+                        "on-secondary": "#ffffff",
+                        "primary": "#0059bb",
+                        "surface-container-high": "#e9e8e8",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#f5f3f3",
+                        "on-tertiary-fixed": "#1d1c11",
+                        "surface-variant": "#e3e2e2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Manrope"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: theme('colors.background');
+            color: theme('colors.on-surface');
+        }
+        h1, h2, h3, h4, h5, h6, .headline {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .label {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
   </head>
   <body>
     <div id="root"></div>

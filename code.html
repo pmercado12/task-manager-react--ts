@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lucid Tasks</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;family=Manrope:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "secondary": "#5e5e5e",
+                        "inverse-surface": "#303031",
+                        "primary-fixed-dim": "#adc7ff",
+                        "on-surface": "#1b1c1c",
+                        "on-primary-container": "#fefcff",
+                        "tertiary-container": "#787566",
+                        "surface-bright": "#faf9f9",
+                        "surface-tint": "#005bc0",
+                        "on-secondary-fixed-variant": "#464747",
+                        "outline-variant": "#c1c6d7",
+                        "surface-container-highest": "#e3e2e2",
+                        "on-primary-fixed": "#001a41",
+                        "outline": "#717786",
+                        "surface": "#faf9f9",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "on-secondary-container": "#646464",
+                        "secondary-fixed": "#e3e2e2",
+                        "error": "#ba1a1a",
+                        "on-background": "#1b1c1c",
+                        "secondary-container": "#e3e2e2",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#fffbff",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#e7e3d1",
+                        "tertiary": "#5f5c4f",
+                        "on-surface-variant": "#414754",
+                        "inverse-on-surface": "#f2f0f0",
+                        "inverse-primary": "#adc7ff",
+                        "surface-container": "#efeded",
+                        "on-tertiary-fixed-variant": "#49473a",
+                        "primary-container": "#0070ea",
+                        "tertiary-fixed-dim": "#cbc7b6",
+                        "background": "#faf9f9",
+                        "primary-fixed": "#d8e2ff",
+                        "on-primary-fixed-variant": "#004493",
+                        "surface-dim": "#dbdad9",
+                        "on-error-container": "#93000a",
+                        "on-secondary": "#ffffff",
+                        "primary": "#0059bb",
+                        "surface-container-high": "#e9e8e8",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#f5f3f3",
+                        "on-tertiary-fixed": "#1d1c11",
+                        "surface-variant": "#e3e2e2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Manrope"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: theme('colors.background');
+            color: theme('colors.on-surface');
+        }
+        h1, h2, h3, h4, h5, h6, .headline {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .label {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col md:flex-row antialiased selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- SideNavBar (Web Only) -->
+<nav class="hidden md:flex flex-col h-screen fixed left-0 top-0 w-64 bg-[#f5f3f3]/90 backdrop-blur-md z-40 border-r-0 no-border flat">
+<div class="flex flex-col h-full p-4 gap-8">
+<div class="flex items-center gap-3 px-2">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-primary-container flex items-center justify-center text-on-primary font-bold shadow-sm">
+                    TF
+                </div>
+<div>
+<h1 class="font-['Plus_Jakarta_Sans'] font-bold text-lg text-slate-900">Task Flow</h1>
+<p class="font-['Manrope'] font-medium text-sm text-secondary">Premium Plan</p>
+</div>
+</div>
+<div class="flex flex-col gap-2 flex-grow font-['Manrope'] font-medium text-sm">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-white/50 transition-all duration-300 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined text-[20px]">grid_view</span>
+                    Dashboard
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-white text-[#0059bb] shadow-sm transition-all duration-300" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                    My Tasks
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-white/50 transition-all duration-300 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined text-[20px]">insert_chart</span>
+                    Analytics
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-white/50 transition-all duration-300 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined text-[20px]">group</span>
+                    Team
+                </a>
+</div>
+<button class="mt-auto flex items-center justify-center gap-2 w-full py-3 px-4 rounded-[1.5rem] bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold shadow-sm hover:shadow-[0_12px_40px_rgba(0,89,187,0.06)] transition-all">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                New Project
+            </button>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 flex flex-col min-h-screen">
+<!-- TopNavBar (Mobile Only) -->
+<header class="md:hidden w-full bg-[#faf9f9]/80 backdrop-blur-xl docked full-width top-0 sticky z-50 no-border tonal-shift bg-surface-container-low shadow-[0_12px_40px_rgba(0,89,187,0.04)]">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-[1440px] mx-auto">
+<div class="text-xl font-extrabold text-[#0059bb] tracking-tighter headline">
+                    Lucid Tasks
+                </div>
+<div class="flex items-center gap-4 text-[#0059bb]">
+<button class="p-2 rounded-full hover:bg-slate-100/50 transition-colors active:scale-95 duration-200 ease-out">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-slate-100/50 transition-colors active:scale-95 duration-200 ease-out">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</div>
+</header>
+<!-- TopNavBar (Web - Simplified for content area) -->
+<header class="hidden md:flex justify-between items-center w-full px-12 py-8 max-w-[1440px] mx-auto">
+<div class="text-2xl font-extrabold text-primary tracking-tighter headline">
+                    Lucid Tasks
+             </div>
+<div class="flex items-center gap-4 text-primary">
+<button class="p-2 rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<img alt="User profile" class="w-10 h-10 rounded-full object-cover shadow-sm border border-outline-variant/15" data-alt="Portrait of a smiling professional man in a bright modern office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgreGSYyN9c1N4yv6lVdcFqg-ODNkbscyXKDhrZJ5GsZVqvACfdNU_LxScRSHxVCdZ9-Vr9Uy8FLcwvbhE1iXa4tS2g9daVcui5c9rODaBTEjDuj3M10SEoByHXXgnX2UiZ4cR1RSuoEQae1ZAyPw3RgtzRi6krXu__nxKmc-_5SqMPjDmY-DfWV6QKUPL1691KWGLtIl-peJzLQHdoGZAWhls9eKqlJFb6YXgeSNauohaMN_DyGCyhbv0RfqElwGCvE3mMWHAJ_3I"/>
+</div>
+</header>
+<div class="px-6 md:px-12 pb-24 max-w-4xl mx-auto w-full flex-grow flex flex-col">
+<!-- Dashboard Header -->
+<div class="mt-8 md:mt-4 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<h1 class="text-4xl md:text-5xl font-extrabold headline text-on-surface tracking-tight mb-2">Good Morning</h1>
+<p class="text-secondary text-lg font-medium">You have 2 tasks pending today.</p>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl flex items-center gap-4 shadow-sm border border-outline-variant/15">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-bold text-lg">
+                        0/2
+                    </div>
+<div>
+<div class="text-sm font-semibold text-on-surface">Daily Progress</div>
+<div class="text-xs text-secondary mt-0.5">Completed</div>
+</div>
+</div>
+</div>
+<!-- Task Input Area -->
+<div class="bg-surface-container-low p-2 rounded-xl flex items-center gap-2 shadow-sm border border-outline-variant/15 mb-10 transition-all focus-within:bg-surface-container-lowest focus-within:shadow-[0_12px_40px_rgba(0,89,187,0.06)] focus-within:border-primary/30">
+<div class="pl-4 text-secondary">
+<span class="material-symbols-outlined">edit_note</span>
+</div>
+<input class="flex-grow bg-transparent border-none focus:ring-0 text-on-surface placeholder:text-secondary/70 font-medium py-3 text-base" placeholder="Write a task..." type="text"/>
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-3 rounded-lg font-semibold shadow-sm hover:shadow-md transition-shadow active:scale-95 duration-200">
+                    Add Task
+                </button>
+</div>
+<!-- Task List -->
+<div class="flex flex-col gap-6">
+<!-- Task Item 1 -->
+<div class="group bg-surface hover:bg-surface-container-highest p-5 rounded-xl flex items-center justify-between transition-colors duration-200 border border-transparent hover:border-outline-variant/15 cursor-pointer">
+<div class="flex items-center gap-4">
+<button class="w-6 h-6 rounded border-2 border-outline flex items-center justify-center text-transparent hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-[16px] font-bold">check</span>
+</button>
+<div class="flex flex-col">
+<span class="text-on-surface font-semibold text-lg title-md">Review Q3 Financial Report</span>
+<span class="text-secondary text-sm label flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span>
+                                Today, 2:00 PM
+                            </span>
+</div>
+</div>
+<button class="opacity-0 group-hover:opacity-100 text-secondary hover:text-error transition-all p-2 rounded-full hover:bg-error-container/50">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+<!-- Task Item 2 -->
+<div class="group bg-surface hover:bg-surface-container-highest p-5 rounded-xl flex items-center justify-between transition-colors duration-200 border border-transparent hover:border-outline-variant/15 cursor-pointer">
+<div class="flex items-center gap-4">
+<button class="w-6 h-6 rounded border-2 border-outline flex items-center justify-center text-transparent hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-[16px] font-bold">check</span>
+</button>
+<div class="flex flex-col">
+<span class="text-on-surface font-semibold text-lg title-md">Finalize Design System Components</span>
+<span class="text-secondary text-sm label flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px]">flag</span>
+                                High Priority
+                            </span>
+</div>
+</div>
+<button class="opacity-0 group-hover:opacity-100 text-secondary hover:text-error transition-all p-2 rounded-full hover:bg-error-container/50">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>
