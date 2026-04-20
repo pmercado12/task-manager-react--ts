@@ -7,7 +7,8 @@ datasource db {
 }
 
 model tasks {
-  id    String  @id @default(uuid())
-  text  String? @db.VarChar
-  state String? @db.VarChar
+  id              String   @id @default(uuid())
+  text            String?  @db.VarChar
+  state           String?  @db.VarChar
+  fecha_creacion  DateTime @default(now()) @db.Timestamptz
 }

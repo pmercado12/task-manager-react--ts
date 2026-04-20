@@ -5,117 +5,99 @@ import Footer from "./componentes/Footer/Footer.js";
 import { useEffect, useState } from "react";
 import type { Task } from "./types/Task.js";
 
-type AppModel = {
-  tasks: Task[];
-  tasksNumber :number;
-  tasksCompletedNumber :number;  
-};
-
 export default function App() {
-  const [appModel, setApp] = useState<AppModel>({
-    tasks: [],
-    tasksNumber:0,
-    tasksCompletedNumber : 0
-  });
+  const [tasks, setApp] = useState<Task[]>([]);
 
-  const handleAdicionarTarea = (task: Task) => {
-    fetch("http://localhost:3000/tasks",{
-      method:'POST',
-      headers:{
-        "Content-Type":"application/json"
-      },
-      body:JSON.stringify(task)
-    }).then(response => response.json())
-    .then(datax=>{
-      console.log("tarea creada en backend", datax);
-      setApp((prev) => ({
-        ...prev,
-        tasksNumber:prev.tasksNumber + 1,
-        tasks: [...prev.tasks, datax],
-      }));
-    }).catch(
-      error=>{
-        console.error("Error al guardar tarea", error);
-      }
-    );
+  const API_URL = "http://localhost:3000/tasks";
+
+  const fetchJSON = async (url: string, options = {}) => {
+    const res = await fetch(url, {
+      headers: { "Content-Type": "application/json" },
+      ...options,
+    });
+
+    if (!res.ok) throw new Error("Error en la petición");
+
+    return res.json();
   };
 
-  const onCambiarEstadoTask = (taskInput: Task) => {
-    fetch(`http://localhost:3000/tasks/${taskInput.id}`,{
-      method:'PUT',
-      headers:{
-        "Content-Type":"application/json"
-      },
-      body:JSON.stringify(taskInput)
-    }).then(response => response.json())
-    .then(datax=>{
-      setApp((prev) => ({
-        ...prev,
-        tasksCompletedNumber: prev.tasksCompletedNumber + (taskInput.state == 'completed' ? 1 : -1),
-        tasks: prev.tasks.map((task) =>
+
+  const handleAdicionarTarea = async (task: Task) => {
+    try {
+      const data = await fetchJSON(API_URL, {
+        method: "POST",
+        body: JSON.stringify(task),
+      });
+      setApp(prev => ([...prev, data]));
+    } catch (error) {
+      console.error("Error al guardar tarea", error);
+    }
+  };
+
+  const onCambiarEstadoTask = async (taskInput: Task) => {
+    try {
+      const data = await fetchJSON(API_URL + "/" + taskInput.id, {
+        method: "PUT",
+        body: JSON.stringify(taskInput),
+      });
+      setApp(prev =>
+        prev.map(task =>
           task.id === taskInput.id ? { ...task, state: taskInput.state } : task,
-        ),
-      }));
-    }).catch(
-      error=>{
-        console.error("Error al guardar tarea", error);
-      }
-    );    
+        )
+      );
+    } catch (error) {
+      console.error("Error al guardar tarea", error);
+    }
   };
 
-  const onEliminarTarea = (taskInput: Task) => {
-    fetch(`http://localhost:3000/tasks/${taskInput.id}`,{
-      method:'DELETE'
-    }).then(response => response.json())
-    .then(datax=>{
-      setApp((prev) => ({
-        ...prev,      
-        tasks: prev.tasks.filter(task=>task.id !== taskInput.id),
-        tasksCompletedNumber: prev.tasksCompletedNumber + (taskInput.state == 'completed' ? -1 : 0),
-        tasksNumber: prev.tasksNumber - 1
-      }));
-    }).catch(
-      error=>{
-        console.error("Error al guardar tarea", error);
-      }
-    );    
+  const onEliminarTarea = async (taskInput: Task) => {
+
+    try {
+      const data = await fetchJSON(API_URL + "/" + taskInput.id, {
+        method: "DELETE"
+      });
+      setApp(prev => prev.filter(task => task.id !== taskInput.id)
+      );
+    } catch (error) {
+      console.error("Error al eliminar tarea", error);
+    }
   };
 
-  useEffect(
-    ()=>{
-      fetch('http://localhost:3000/tasks').then((response)=>response.json()).then((data)=>{
-        
-        setApp((prev) => ({
-          ...prev,
-          ...prev.tasks = data,
-          tasksCompletedNumber: data.filter(task=>task.state=='completed').length,
-          tasksNumber: data.length
-        }));
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await fetchJSON(API_URL, {
+          method: "GET"
+        });
+        setApp(data);
+      } catch (error) {
+        console.error("Error al obtener tareas", error);
+      }
+    };
 
-      }).catch(error=>{
-        console.log('Error al obtener tareas', error);
-      })
-    },[]
-  );
+    fetchData();
+  }, []);
 
+  const tasksNumber = tasks.length;
+  const tasksCompletedNumber = tasks.filter(task => task.state == 'completed').length;
   return (
     <div>
-      <div class="grid-container">
-        <div class="grid-item"></div>
-        <div class="grid-item grid-border">
-        <Header tasksNumber={appModel.tasksNumber}
-        tasksCompleted={appModel.tasksCompletedNumber}
-        ></Header>
-        <br />
-        <TaskInput onAdicionarTarea={handleAdicionarTarea}></TaskInput>
-        <TaskList
-          items={appModel.tasks}
-          onCambiarEstadoTask={onCambiarEstadoTask}
-          onEliminarTarea={onEliminarTarea}
-        ></TaskList>      
+      <div className="grid-container">
+        <div className="grid-item"></div>
+        <div className="grid-item grid-border">
+          <Header tasksNumber={tasksNumber}
+            tasksCompleted={tasksCompletedNumber}
+          ></Header>
+          <br />
+          <TaskInput onAdicionarTarea={handleAdicionarTarea}></TaskInput>
+          <TaskList
+            items={tasks}
+            onCambiarEstadoTask={onCambiarEstadoTask}
+            onEliminarTarea={onEliminarTarea}
+          ></TaskList>
         </div>
         <Footer></Footer>
-      </div>    
+      </div>
     </div>
   );
 }
