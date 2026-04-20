@@ -4,11 +4,12 @@ import TaskList from "./componentes/TaskList/TaskList.js";
 import Footer from "./componentes/Footer/Footer.js";
 import { useEffect, useState } from "react";
 import type { Task } from "./types/Task.js";
+import { API_ENDPOINTS } from "./config/api.js";
 
 export default function App() {
   const [tasks, setApp] = useState<Task[]>([]);
 
-  const API_URL = "http://localhost:3000/tasks";
+  const API_URL = API_ENDPOINTS.TASKS;
 
   const fetchJSON = async (url: string, options = {}) => {
     const res = await fetch(url, {
