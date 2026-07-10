@@ -38,4 +38,6 @@ jobs:
           cache: 'npm'
           cache-dependency-path: backend/package-lock.json
       - run: npm ci      
+      - run: npx prisma db push
       - run: npm run build
+      
