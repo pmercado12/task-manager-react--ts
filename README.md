@@ -13,7 +13,7 @@ Aplicación Full Stack para la gestión de tareas desarrollada con React, Expres
   - Header y Footer
   - EmptyState: Estado vacío
 
-<!-- BADGE_CI -->
+[![CI](https://github.com/pmercado12/task-manager-react--ts/actions/workflows/ci.yml/badge.svg)](https://github.com/pmercado12/task-manager-react--ts/actions/workflows/ci.yml)
 
 ## Requisitos
 
