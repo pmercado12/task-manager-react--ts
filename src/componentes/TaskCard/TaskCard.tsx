@@ -6,7 +6,7 @@ type Props = {
     onEliminarTarea: (task: Task) => void;
 };
 
-export default function TaskCard(props: Props){
+export default function TaskCard(props: Props{
 
     const onCambiarEstadoTask = (task: Task) => {
         if(task.state == "completed"){
