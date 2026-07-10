@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import type { Task } from '../../types/Task.js';
 
 type Props = {
