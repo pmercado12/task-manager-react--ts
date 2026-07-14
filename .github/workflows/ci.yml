@@ -54,8 +54,17 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
+      #- run: npm ci
+      #- run: npx vitest run --coverage
+      # Frontend dependencies
       - run: npm ci
+
+      # Backend dependencies
+      - run: npm ci
+        working-directory: ./backend
+
       - run: npx vitest run --coverage
+        
  
   e2e:
     name: Pruebas E2E
