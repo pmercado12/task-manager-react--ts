@@ -10,5 +10,5 @@ test('un usuario puede crear una tarea y verla en la lista', async ({ page }) =>
  
   // 3. Verla en la lista
   //await expect(page.getByText('Comprar pan')).toBeVisible()
-  await expect(page.getByText('Comprar pan').first()).toBeVisible()
+  await expect(page.getByText('Comprar pan2').first()).toBeVisible()
 })
