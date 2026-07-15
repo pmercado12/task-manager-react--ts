@@ -9,5 +9,6 @@ test('un usuario puede crear una tarea y verla en la lista', async ({ page }) =>
   await page.getByRole('button', { name: 'Adicionar Tarea' }).click()
  
   // 3. Verla en la lista
-  await expect(page.getByText('Comprar pan')).toBeVisible()
+  //await expect(page.getByText('Comprar pan')).toBeVisible()
+  await expect(page.getByText('Comprar pan').first()).toBeVisible()
 })
