@@ -63,6 +63,7 @@ jobs:
       - run: npm ci
       - run: npx prisma db push
       - run: npx vitest run --coverage
+        working-directory: ./
         
  
   e2e:
