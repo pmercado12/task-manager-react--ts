@@ -64,7 +64,7 @@ jobs:
         working-directory: ./
       - run: npm ci
         working-directory: ./backend  
-      - run: npx prisma db push
+      - run: npx prisma generate
         working-directory: ./backend  
       - run: npx vitest run --coverage
         working-directory: ./
