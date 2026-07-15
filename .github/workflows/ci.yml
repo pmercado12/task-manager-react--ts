@@ -45,6 +45,8 @@ jobs:
   pruebas:
     name: Pruebas unitarias y cobertura
     runs-on: ubuntu-latest
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
     defaults:
       run:
         working-directory: ./backend
