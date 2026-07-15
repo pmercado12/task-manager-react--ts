@@ -73,6 +73,8 @@ jobs:
   e2e:
     name: Pruebas E2E
     runs-on: ubuntu-latest
+    env:
+      VITE_API_URL: ${{ secrets.VITE_API_URL }}
     defaults:
       run:
         working-directory: ./
