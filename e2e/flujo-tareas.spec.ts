@@ -5,10 +5,10 @@ test('un usuario puede crear una tarea y verla en la lista', async ({ page }) =>
   await page.goto('/')
  
   // 2. Crear una tarea
-  await page.getByPlaceholder('Escribe una tarea').fill('Comprar pan')
+  await page.getByPlaceholder('Escribe una tarea').fill('Comprar pan y queso')
   await page.getByRole('button', { name: 'Adicionar Tarea' }).click()
  
   // 3. Verla en la lista
   //await expect(page.getByText('Comprar pan')).toBeVisible()
-  await expect(page.getByText('Comprar pan2').first()).toBeVisible()
+  await expect(page.getByText('Comprar pan y queso').first()).toBeVisible()
 })
