@@ -62,7 +62,10 @@ jobs:
       # Frontend dependencies
       - run: npm ci
         working-directory: ./
-      #- run: npx prisma db push
+      - run: npm ci
+        working-directory: ./backend  
+      - run: npx prisma db push
+        working-directory: ./backend  
       - run: npx vitest run --coverage
         working-directory: ./
         
