@@ -1,0 +1,7 @@
+docker build --build-arg DATABASE_URL="$DATABASE_URL" -t pmercado12/task-manager .
+
+docker run --env-file .env pmercado12/task-manager
+
+docker build --build-arg VITE_API_URL=https://task-manager-react-ts.onrender.com -t pmercado12/task-manager-frontend .
+
+docker run -p 5173:80 pmercado12/task-manager-frontend
