@@ -28,10 +28,10 @@ export const createTask = async (req: any, res: any) => {
             return res.status(400).json({ error: "El campo 'texto' es obligatorio" });
         }
 
-        /*const response = await prisma.tasks.create({
+        const response = await prisma.tasks.create({
             data: newTask,
-        });*/
-        const response = newTask;
+        });
+        //const response = newTask;
 
         res.status(201).json(response);
     } catch (error) {
