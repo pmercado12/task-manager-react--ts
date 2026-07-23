@@ -1,5 +1,6 @@
 import TaskInput from "./componentes/TaskInput/TaskInput.js";
 import TaskList from "./componentes/TaskList/TaskList.js";
+import Footer from "./componentes/Footer/Footer.js";
 import { useEffect, useState } from "react";
 import type { Task } from "./types/Task.js";
 import { API_ENDPOINTS } from "./config/api.js";
@@ -113,6 +114,7 @@ export default function App() {
           onEliminarTarea={onEliminarTarea}
         />
       </div>
-    </div>
+      <Footer />
+    </div>    
   );
 }
